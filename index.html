@@ -14,6 +14,12 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
+    <style type="text/css">
+         .input-field input[type=text].invalid {
+           border-bottom: 1px solid #ff3030;
+           box-shadow: 0 1px 0 0 #ff3030;
+         }
+    </style>
     <title>Get your work organized</title>
   </head>
   <body>
@@ -30,7 +36,7 @@
                     <label for="task">I want to </label>
                   </div>
                   <input
-                    type="submit"
+                    type="submit" 
                     value="Add Task"
                     class="btn green darken-1"
                   />
@@ -44,7 +50,7 @@
                 <label for="filter">Search</label>
               </div>
               <ul class="collection"></ul>
-              <a href="#" class="clear-tasks btn black">Clear Tasks</a>
+              <a href="#" class="clear-tasks btn red">Clear Tasks</a>
             </div>
           </div>
         </div>

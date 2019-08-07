@@ -52,8 +52,13 @@ function getTasks() {
 
 // Add Task
 function addTask(e) {
+	e.preventDefault();
   if (taskInput.value === "") {
     alert("Add a task");
+    taskInput.classList = 'invalid';
+    taskInput.focus();
+    console.log(1);
+    return;
   }
 
   // Create li element
@@ -62,16 +67,16 @@ function addTask(e) {
   li.appendChild(document.createTextNode(taskInput.value));
   const link = document.createElement("a");
   link.className = "delete-item secondary-content";
-  link.innerHTML = '<i class="fa fa-remove"></i>';
+  link.innerHTML = '<i class="fa fa-trash"></i>';
   li.appendChild(link);
 
   taskList.appendChild(li);
 
   storeTaskInLocalStorage(taskInput.value);
-
+  taskInput.classList = '';
   taskInput.value = "";
 
-  e.preventDefault();
+  
 }
 
 // Store Task
@@ -91,11 +96,11 @@ function storeTaskInLocalStorage(task) {
 // Remove Task
 function removeTask(e) {
   if (e.target.parentElement.classList.contains("delete-item")) {
-    if (confirm("Are You Sure?")) {
+    
       e.target.parentElement.parentElement.remove();
 
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
-    }
+  
   }
 }
 
@@ -119,9 +124,11 @@ function removeTaskFromLocalStorage(taskItem) {
 
 // Clear Tasks
 function clearTasks() {
-  while (taskList.firstChild) {
+ if (confirm('Are You Sure ?')) {
+ 	 while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
+ }
 
   clearTasksFromLocalStorage();
 }
